@@ -9,7 +9,7 @@ app = Flask(__name__)
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
 app.config['MYSQL_PASSWORD'] = '12345'
-app.config['MYSQL_DB'] = 'flask_contacts'
+app.config['MYSQL_DB'] = 'cuponurbano'
 mysql = MySQL(app)
 
 # settings de la sesion
@@ -18,21 +18,25 @@ app.secret_key = 'mysecretkey'
 @app.route('/')
 def Index():
     cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM contacts')
+    cur.execute('SELECT * FROM registro_usuarios')
     data = cur.fetchall()
     print(data)
-    return render_template('index.html', contacts = data)
+    return render_template('register.html', contacts = data)
 
 @app.route('/add_contact', methods=['POST'])
 def add_contact():
     if request.method == 'POST':
-        fullname = request.form['fullname']
+        id_dni = request.form['id_dni']
+        nombre_usuario = request.form['nombre_usuario']
+        apellido_usuario = request.form['apellido_usuario']
+        mail_usuario = request.form['mail_usuario']
+        alias = request.form['alias']
         phone = request.form['phone']
-        email = request.form['email']
+        contrasenia = request.form['contrasenia']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO contacts (fullname, phone, email) VALUES(%s, %s, %s)', (fullname, phone, email))
+        cur.execute('INSERT INTO registro_usuarios (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia) VALUES(%s, %s, %s, %s, %s, %s)', (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia))
         mysql.connection.commit()
-        flash('Contact added scuccesfully')
+        flash('Contact added succesfully')
         return redirect(url_for('Index'))
 
 @app.route('/edit/<id>')
