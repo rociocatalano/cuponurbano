@@ -8,36 +8,47 @@
         </div>
         {%endfor%} {% endif%} {%endwith%}
         <div class="card card-body">
-            <h1>Registrarse</h1>
+            <h1>Formulario de registro</h1>
             <form action="/add_contact" method="POST">
-                <div class="form-group">
-                    <input type="text" name="nombre_usuario" placeholder="Ingrese su nombre" class="form-control">
+                <div class="row">
+                    <div class="col form-group">
+                        <p>Nombre:
+                            <input type="text" name="nombre_usuario" placeholder="Ingrese su nombre" class="form-control"></p>
+                    </div>
+                    <div class="col form-group">
+                        <p>Apellido:
+                            <input type="text" name="apellido_usuario" placeholder="Ingrese su apellido" class="form-control"></p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="apellido_usuario" placeholder="Ingrese su apellido" class="form-control">
+                <div class="row">
+                    <div class="col form-group">
+                        <p>DNI:
+                            <input type="text" name="id_dni" placeholder="Ingrese su DNI" class="form-control"></p>
+                    </div>
+                    <div class="col form-group">
+                        <p>Alias:
+                            <input type="text" name="alias" placeholder="Ingrese su alias o nombre de usuario" class="form-control"></p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="id_dni" placeholder="Ingrese su DNI" class="form-control">
+                <div class="row">
+                    <div class="col-6 form-group">
+                        <p>Contraseña:
+                            <input type="text" name="contrasenia" placeholder="Ingrese su contraseña (más de 8 caracteres)" class="form-control"></p>
+                    </div>
+                    <div class="col-6 form-group">
+                        <p>Correo electrónico:
+                            <input type="text" name="mail_usuario" placeholder="E-mail" class="form-control"></p>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <input type="text" name="alias" placeholder="Ingrese su alias o nombre de usuario" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="contrasenia" placeholder="Ingrese su contraseña (más de 8 caracteres)" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="phone" placeholder="Ingrese su número de teléfono" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="text" name="mail_usuario" placeholder="E-mail" class="form-control">
-                </div>
-                <div class="form-group">
-                    <!--btn block no funciona como muestra el video en bootstrap 5, use col-12 para que ocupe todo-->
-                    <button type="submit" class="btn btn-primary col-12">Enviar</button>
-                </div>
-            </form>
         </div>
+        <div class="row form-group">
+            <div class="col-3"></div>
+            <button type="submit" class="btn btn-submit col-6 justify-content-center ">Enviar</button>
+            <div class="col-3"></div>
+        </div>
+        </form>
     </div>
+</div>
 
 
 </div>

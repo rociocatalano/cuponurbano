@@ -31,7 +31,6 @@ def add_contact():
         apellido_usuario = request.form['apellido_usuario']
         mail_usuario = request.form['mail_usuario']
         alias = request.form['alias']
-        phone = request.form['phone']
         contrasenia = request.form['contrasenia']
         cur = mysql.connection.cursor()
         cur.execute('INSERT INTO registro_usuarios (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia) VALUES(%s, %s, %s, %s, %s, %s)', (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia))
