@@ -1,33 +1,33 @@
 #import email
+import json
 from urllib import request
 from flask import Flask, flash, render_template, request, redirect, url_for
-from flask_mysqldb import MySQL
+from administradorDB import AdministradorDB 
+from contacto import Contacto
 
 app = Flask(__name__)
 
 #MySQL connection
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '****'
+app.config['MYSQL_PASSWORD'] = '*****'
 app.config['MYSQL_DB'] = 'cuponurbano'
 mysql = MySQL(app)
 
 # settings de la sesion
 app.secret_key = 'mysecretkey'
 
+administradorDb = AdministradorDB(app)
+
 @app.route('/')
 def Index():
-    cur = mysql.connection.cursor()
-    cur.execute('SELECT * FROM registro_usuarios')
-    data = cur.fetchall()
+    data = administradorDb.obtener_contactos()
     print(data)
     return render_template('register.html', contacts = data)
 
 @app.route('/admin')
 def admin():
-   cur = mysql.connection.cursor()
-   cur.execute('SELECT * FROM registro_usuarios')
-   data = cur.fetchall()
+   data = administradorDb.obtener_contactos()
    print(data)
    return render_template('admin.html', contacts = data)
 
@@ -42,7 +42,7 @@ def add_contact():
         alias = request.form['alias']
         contrasenia = request.form['contrasenia']
         cur = mysql.connection.cursor()
-        cur.execute('INSERT INTO registro_usuarios (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia) VALUES (%s, %s, %s, %s, %s, %s)', (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia))
+        cur.execute('INSERT INTO registro_usuarios (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia) VALUES(%s, %s, %s, %s, %s, %s)', (id_dni, nombre_usuario, apellido_usuario, mail_usuario, alias, contrasenia))
         mysql.connection.commit()
         flash('Contact added succesfully')
         return redirect(url_for('Index'))
@@ -50,7 +50,7 @@ def add_contact():
 @app.route('/edit/<id>')
 def get_contact(id):
     cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM registro_usuarios WHERE id_dni = %s", [id])
+    cur.execute("SELECT * FROM contacts WHERE id = %s", [id])
     data = cur.fetchall()
     print(data[0])
     return render_template('edit-contact.html', contact = data[0])
@@ -83,7 +83,7 @@ def update_contact(id):
 @app.route('/delete/<string:id>')
 def delete_contact(id):
     cur = mysql.connection.cursor()
-    cur.execute('DELETE FROM registro_usuarios WHERE id_dni = {0}'.format(id))
+    cur.execute('DELETE FROM contacts WHERE id = {0}'.format(id))
     mysql.connection.commit()
     flash('Contact removed succesfully')
     return redirect(url_for('Index'))
