@@ -8,7 +8,7 @@ app = Flask(__name__)
 #MySQL connection
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '12345'
+app.config['MYSQL_PASSWORD'] = '*****'
 app.config['MYSQL_DB'] = 'cuponurbano'
 mysql = MySQL(app)
 
@@ -22,6 +22,15 @@ def Index():
     data = cur.fetchall()
     print(data)
     return render_template('register.html', contacts = data)
+
+@app.route('/admin')
+def admin():
+   cur = mysql.connection.cursor()
+   cur.execute('SELECT * FROM registro_usuarios')
+   data = cur.fetchall()
+   print(data)
+   return render_template('admin.html', contacts = data)
+
 
 @app.route('/add_contact', methods=['POST'])
 def add_contact():
