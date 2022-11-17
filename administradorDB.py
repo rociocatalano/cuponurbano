@@ -6,7 +6,7 @@ class AdministradorDB:
         #MySQL connection
         app.config['MYSQL_HOST'] = 'localhost'
         app.config['MYSQL_USER'] = 'root'
-        app.config['MYSQL_PASSWORD'] = '******'
+        app.config['MYSQL_PASSWORD'] = '010420'
         app.config['MYSQL_DB'] = 'cuponurbano'
         self.mysql = MySQL(app)
     
@@ -35,10 +35,9 @@ class AdministradorDB:
                 apellido_usuario = %s,
                 mail_usuario = %s,
                 alias = %s,
-                contrasenia = %s,
-                id_dni = %s
+                contrasenia = %s
             WHERE id_dni = %s
-        """, (contacto.nombre_usuario,contacto.apellido_usuario,contacto.mail_usuario,contacto.alias,contacto.contrasenia,contacto.id_dni))
+        """, (contacto.nombre_usuario, contacto.apellido_usuario, contacto.mail_usuario, contacto.alias, contacto.contrasenia, contacto.id_dni))
         self.mysql.connection.commit()
 
     def borrar_contacto(self,id):
