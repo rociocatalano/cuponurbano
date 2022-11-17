@@ -23,7 +23,7 @@ class AdministradorDB:
 
     def obtener_contactos_por_ID(self,id):
         cur = self.mysql.connection.cursor()
-        cur.execute("SELECT * FROM contacts WHERE id = %s", [id])
+        cur.execute("SELECT * FROM registro_usuarios WHERE id_dni = %s", [id])
         data = cur.fetchall()
         return data
 
@@ -37,11 +37,11 @@ class AdministradorDB:
                 alias = %s,
                 contrasenia = %s,
                 id_dni = %s
-            WHERE id = %s
+            WHERE id_dni = %s
         """, (contacto.nombre_usuario,contacto.apellido_usuario,contacto.mail_usuario,contacto.alias,contacto.contrasenia,contacto.id_dni))
         self.mysql.connection.commit()
 
     def borrar_contacto(self,id):
         cur = self.mysql.connection.cursor()
-        cur.execute('DELETE FROM contacts WHERE id = {0}'.format(id))
+        cur.execute('DELETE FROM registro_usuarios WHERE id_dni = {0}'.format(id))
         self.mysql.connection.commit()

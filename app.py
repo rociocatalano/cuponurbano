@@ -40,8 +40,9 @@ def get_contact(id):
 
 @app.route('/update/<id>', methods = ['POST'])
 def update_contact(id):
-    contacto = Contacto(request.form)
-    administradorDb.iditar_contacto(contacto)
+    formulario = request.form
+    contacto = Contacto(formulario, id)
+    administradorDb.editar_contacto(contacto)
     flash('Contact Updated Succesfully')
     return redirect(url_for('Index'))
 
