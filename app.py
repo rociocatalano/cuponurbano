@@ -47,13 +47,13 @@ def update_contact(id):
     formulario = request.form
     contacto = Contacto(formulario, id)
     administradorDb.editar_contacto(contacto)
-    flash('Contact Updated Succesfully')
+    flash('Contacto actualizado exitosamente')
     return redirect(url_for('admin'))
 
 @app.route('/delete/<string:id>')
 def delete_contact(id):
     administradorDb.borrar_contacto(id)
-    flash('Contact removed succesfully')
+    flash('Contacto eliminado exitosamente')
     return redirect(url_for('admin'))
 
 if __name__ == '__main__':
