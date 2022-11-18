@@ -26,9 +26,7 @@ def admin():
 
 @app.route('/placeholder')
 def placeholder():
-   data = administradorDb.obtener_contactos()
-   print(data)
-   return render_template('placeholder.html', contacts = data)
+   return render_template('placeholder.html')
 
 
 @app.route('/add_contact', methods=['POST'])

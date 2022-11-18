@@ -52,6 +52,14 @@ body {
     padding: 50px;
     background-color: #b8ccf6;
     color: #56A3A6;
+    font-size: 1.2vw;
+    margin: 2vw 0vw 2vw 0vw;
+}
+
+h1 {
+    text-align: center;
+    padding-bottom: 30px;
+    font-size: 2.5vw;
 }
 
 .btn-submit {
@@ -66,8 +74,16 @@ body {
     background-color: #b8ccf6;
 }
 
-.placeholder {
+#placeholder {
     background: transparent;
     height: 70vh;
     color: black;
+    padding: 20px;
+}
+
+#main-body {
+    background: transparent;
+    margin: auto;
+    height: 77vh;
+    width: 100%;
 }
