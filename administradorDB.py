@@ -6,7 +6,7 @@ class AdministradorDB:
         #MySQL connection
         app.config['MYSQL_HOST'] = 'localhost'
         app.config['MYSQL_USER'] = 'root'
-        app.config['MYSQL_PASSWORD'] = '010420'
+        app.config['MYSQL_PASSWORD'] = '6277Horde'
         app.config['MYSQL_DB'] = 'cuponurbano'
         self.mysql = MySQL(app)
     

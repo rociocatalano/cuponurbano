@@ -65,3 +65,9 @@ body {
 :hover.btn-submit {
     background-color: #b8ccf6;
 }
+
+.placeholder {
+    background: transparent;
+    height: 70vh;
+    color: black;
+}
