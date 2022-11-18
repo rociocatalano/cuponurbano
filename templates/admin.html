@@ -1,5 +1,5 @@
 {% extends 'layout.html' %} {% block body %}
-<div class="col-md-7">
+<div class="col-md-7" id="body-edit">
     {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
     <div class="alert alert-success alert-dismissible fade show" role="alert">
         {{message}}
@@ -14,7 +14,7 @@
                 <td>Nombre</td>
                 <td>Apellido</td>
                 <td>Email</td>
-                <td>Operations</td>
+                <td>Operaciones</td>
             </tr>
         </thead>
         <tbody>
@@ -24,7 +24,7 @@
                 <td>{{contact.2}}</td>
                 <td>{{contact.3}}</td>
                 <td>
-                    <a href="/edit/{{contact.0}}" class="btn btn-whithe">Editar</a>
+                    <a href="/edit/{{contact.0}}" class="btn btn-secondary">Editar</a>
                     <a href="/delete/{{contact.0}}" class="btn btn-danger">Borrar</a>
                 </td>
             </tr>

@@ -87,3 +87,10 @@ h1 {
     height: 77vh;
     width: 100%;
 }
+
+#body-edit {
+    background: transparent;
+    margin: auto;
+    height: 77vh;
+    padding-top: 2vw;
+}
