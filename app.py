@@ -35,7 +35,7 @@ def placeholder():
 def add_contact():
     contacto = Contacto(request.form)
     administradorDb.insertar_contacto(contacto)
-    flash('Contact added succesfully')
+    flash('Contacto agregado con éxito')
     return redirect(url_for('Index'))
 
 @app.route('/edit/<id>')
@@ -50,13 +50,13 @@ def update_contact(id):
     contacto = Contacto(formulario, id)
     administradorDb.editar_contacto(contacto)
     flash('Contact Updated Succesfully')
-    return redirect(url_for('Index'))
+    return redirect(url_for('admin'))
 
 @app.route('/delete/<string:id>')
 def delete_contact(id):
     administradorDb.borrar_contacto(id)
     flash('Contact removed succesfully')
-    return redirect(url_for('Index'))
+    return redirect(url_for('admin'))
 
 if __name__ == '__main__':
     app.run(port = 3000, debug = True)

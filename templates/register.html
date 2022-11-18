@@ -2,9 +2,11 @@
 <div class="row">
     <div class="col-md-10">
         {% with messages = get_flashed_messages() %} {% if messages %} {% for message in messages %}
-        <div class="alert alert-success alert-dismissible fade show " role="alert ">
-            <p>{{message}} </p>
-            <button type="button " class="btn-close " data-bs-dismiss="alert " aria-label="Close "></button>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{message}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true"></span>
+        </button>
         </div>
         {%endfor%} {% endif%} {%endwith%}
         <div class="card card-body">
@@ -13,43 +15,59 @@
                 <div class="row">
                     <div class="col form-group">
                         <p>Nombre:
-                            <input type="text" name="nombre_usuario" placeholder="Ingrese su nombre" class="form-control"></p>
+                            <input type="text" id="nombre" name="nombre_usuario" placeholder="Ingrese su nombre" class="form-control"></p>
                     </div>
                     <div class="col form-group">
                         <p>Apellido:
-                            <input type="text" name="apellido_usuario" placeholder="Ingrese su apellido" class="form-control"></p>
+                            <input type="text" id="apellido" name="apellido_usuario" placeholder="Ingrese su apellido" class="form-control"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
                         <p>DNI:
-                            <input type="text" name="id_dni" placeholder="Ingrese su DNI" class="form-control"></p>
+                            <input type="text" id="dni" name="id_dni" placeholder="Ingrese su DNI" class="form-control" onkeypress="return valideKey(event);"></p>
                     </div>
                     <div class="col form-group">
                         <p>Alias:
-                            <input type="text" name="alias" placeholder="Ingrese su alias o nombre de usuario" class="form-control"></p>
+                            <input type="text" id="alias" name="alias" placeholder="Ingrese su alias o nombre de usuario" class="form-control"></p>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 form-group">
                         <p>Contraseña:
-                            <input type="text" name="contrasenia" placeholder="Ingrese su contraseña (más de 8 caracteres)" class="form-control"></p>
+                            <input type="text" id="contrasenia" name="contrasenia" placeholder="Ingrese su contraseña (más de 8 caracteres)" class="form-control"></p>
                     </div>
                     <div class="col-6 form-group">
                         <p>Correo electrónico:
-                            <input type="text" name="mail_usuario" placeholder="E-mail" class="form-control"></p>
+                            <input type="text" id="email" name="mail_usuario" placeholder="E-mail" class="form-control"></p>
                     </div>
                 </div>
         </div>
         <div class="row form-group">
             <div class="col-3"></div>
-            <button type="submit" class="btn btn-submit col-6 justify-content-center ">Enviar</button>
-            <div class="col-3"></div>
+            <button type="submit" class="btn btn-submit col-6 justify-content-center" data-bs-toggle="modal" data-bs-target="#modal" onclick="mostrarDatos();">Enviar</button>
+            <div class=" col-3 "></div>
         </div>
         </form>
     </div>
 </div>
 
-
+<div class="modal " id="modal " tabindex="-1 ">
+    <div class="modal-dialog ">
+        <div class="modal-content ">
+            <div class="modal-header ">
+                <h5 class="modal-title " id="modal-title"></h5>
+                <button type="button " class="btn-close" data-bs-dismiss="modal " aria-label="Close "></button>
+            </div>
+            <div class="modal-body ">
+                <p id="modal-body ">Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer ">
+                <button type="button " class="btn btn-secondary " data-bs-dismiss="modal ">Cerrar</button>
+                <button type="button " class="btn btn-primary ">Save changes</button>
+            </div>
+        </div>
+    </div>
 </div>
+
 {% endblock%}
