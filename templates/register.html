@@ -11,35 +11,42 @@
         {%endfor%} {% endif%} {%endwith%}
         <div class="card card-body">
             <h1>Formulario de registro</h1>
+            {% from "_formhelpers.html" import render_field %}
             <form action="/add_contact" method="POST">
                 <div class="row">
                     <div class="col form-group">
-                        <p>Nombre:
-                            <input type="text" id="nombre" name="nombre_usuario" placeholder="Ingrese su nombre" class="form-control"></p>
+                        <dl>
+                            {{ render_field(form.nombre_usuario, placeholder="Ingrese su nombre", class="form-control") }}
+                        </dl>
                     </div>
                     <div class="col form-group">
-                        <p>Apellido:
-                            <input type="text" id="apellido" name="apellido_usuario" placeholder="Ingrese su apellido" class="form-control"></p>
+                        <dl>
+                            {{ render_field(form.apellido_usuario, placeholder="Ingrese su apellido", class="form-control") }}
+                        </dl>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col form-group">
-                        <p>DNI:
-                            <input type="text" id="dni" name="id_dni" placeholder="Ingrese su DNI" class="form-control" onkeypress="return valideKey(event);"></p>
+                        <dl>
+                            {{ render_field(form.id_dni, placeholder="Ingrese su DNI", class="form-control") }}
+                        </dl>
                     </div>
                     <div class="col form-group">
-                        <p>Alias:
-                            <input type="text" id="alias" name="alias" placeholder="Ingrese su alias o nombre de usuario" class="form-control"></p>
+                        <dl>
+                            {{ render_field(form.alias, placeholder="Ingrese su alias o nombre de usuario", class="form-control") }}
+                        </dl>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-6 form-group">
-                        <p>Contraseña:
-                            <input type="text" id="contrasenia" name="contrasenia" placeholder="Ingrese su contraseña (más de 8 caracteres)" class="form-control"></p>
+                        <dl>
+                            {{ render_field(form.contrasenia, placeholder="Ingrese su contraseña (más de 8 caracteres)", class="form-control") }}
+                        </dl>
                     </div>
                     <div class="col-6 form-group">
-                        <p>Correo electrónico:
-                            <input type="text" id="email" name="mail_usuario" placeholder="E-mail" class="form-control"></p>
+                        <dl>
+                            {{ render_field(form.mail_usuario, placeholder="E-mail", class="form-control") }}
+                        </dl>
                     </div>
                 </div>
         </div>

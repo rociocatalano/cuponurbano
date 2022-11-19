@@ -4,6 +4,7 @@ from urllib import request
 from flask import Flask, flash, render_template, request, redirect, url_for
 from administradorDB import AdministradorDB 
 from contacto import Contacto
+from forms import FormValidator
 
 app = Flask(__name__)
 
@@ -16,7 +17,8 @@ administradorDb = AdministradorDB(app)
 def Index():
     data = administradorDb.obtener_contactos()
     print(data)
-    return render_template('register.html', contacts = data)
+    form = FormValidator()
+    return render_template('register.html', contacts = data, form=form)
 
 @app.route('/admin')
 def admin():
