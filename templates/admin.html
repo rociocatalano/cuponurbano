@@ -25,11 +25,13 @@
                 <td>{{contact.3}}</td>
                 <td>
                     <a href="/edit/{{contact.0}}" class="btn btn-secondary">Editar</a>
-                    <a href="/delete/{{contact.0}}" class="btn btn-danger">Borrar</a>
+                    <a href="/delete/{{contact.0}}" class="btn btn-danger btn-delete">Borrar</a>
                 </td>
             </tr>
             {%endfor%}
         </tbody>
     </table>
+
+    <script defer src="{{url_for('static', filename='js/main.js')}}"></script>
 </div>
 {% endblock %}
