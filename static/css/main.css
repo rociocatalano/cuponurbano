@@ -77,7 +77,7 @@ h1 {
 #placeholder {
     background: transparent;
     height: 70vh;
-    color: black;
+    color: #56A3A6;
     padding: 20px;
 }
 
@@ -86,4 +86,11 @@ h1 {
     margin: auto;
     height: 77vh;
     width: 100%;
+}
+
+#body-edit {
+    background: transparent;
+    margin: auto;
+    height: 77vh;
+    padding-top: 2vw;
 }
